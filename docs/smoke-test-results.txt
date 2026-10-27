@@ -1,0 +1,69 @@
+API smoke test - Wed Sep 30 2026 22:42:40 GMT+0530 (India Standard Time)
+------------------------------------------------------------
+PASS  Health endpoint responds
+PASS  Register customer A returns 201 + token, role customer
+PASS  Register customer B
+PASS  Duplicate email rejected (409)
+PASS  Short password rejected (400)
+PASS  Cannot self-register as admin (role forced to customer)
+PASS  Login with correct password
+PASS  Login with wrong password rejected (401)
+FAIL  GET /auth/me returns the user without password
+PASS  Protected route without token -> 401
+PASS  Customer blocked from admin stats (403)
+PASS  Customer cannot create restaurant (403)
+PASS  Restaurants load from MongoDB (seeded)
+PASS  Search by cuisine finds the restaurant
+PASS  Search with no match returns empty list
+PASS  City + cuisine filter works
+PASS  Restaurant details
+PASS  Menu loads
+PASS  Tables load
+PASS  Availability returns hourly slots
+PASS  Customer A books a table (201, pending)
+PASS  DOUBLE BOOKING: same table/date/time by B rejected (409)
+PASS  Availability shows the table as booked
+PASS  Different table, same slot is allowed
+PASS  Past date rejected (400)
+PASS  Too many guests rejected (400)
+PASS  Time outside opening hours rejected (400)
+PASS  Customer cannot view another customer's reservation (403)
+PASS  Customer cannot cancel another customer's reservation (403)
+PASS  My reservations lists only own bookings
+PASS  Modify own reservation works
+PASS  Customer A cancels own reservation
+PASS  Cancelled slot can be booked again
+PASS  Order total is calculated on the server from DB prices
+PASS  New order status is "placed" with simulated payment
+PASS  Empty order rejected (400)
+PASS  Item from another restaurant's menu rejected (400)
+PASS  Delivery order without address rejected (400)
+PASS  Order history lists the order
+PASS  Order details (own)
+PASS  Customer cannot view another customer's order (403)
+PASS  Customer cannot change order status (403)
+PASS  Admin login works and role is admin
+PASS  Admin stats returned
+FAIL  Admin customer list includes the test customers
+PASS  Admin lists all reservations
+PASS  Admin approves a reservation
+PASS  Customer cannot approve reservations (403)
+PASS  Admin lists all orders
+PASS  Admin updates order status -> confirmed
+PASS  Customer sees the new status (tracking)
+PASS  Customer cannot cancel after confirmation (400)
+PASS  Admin marks order delivered
+PASS  Delivered order cannot be changed (400)
+PASS  Admin creates a restaurant
+PASS  Admin edits a restaurant
+PASS  Admin adds a table
+PASS  Duplicate table number rejected (409)
+PASS  Admin disables a table
+PASS  Admin adds a menu item
+PASS  Admin edits menu price
+PASS  Negative price rejected (400)
+PASS  Admin removes a menu item
+PASS  Admin deletes the test restaurant
+PASS  Deleted restaurant is gone (404)
+
+63 passed, 2 failed (65 checks) against http://localhost:5000/api
